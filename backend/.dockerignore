@@ -1,0 +1,33 @@
+# Ignore virtual environments and node modules
+.venv
+node_modules
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Jupyter notebooks (optional, if not needed)
+*.ipynb
+
+# Ignore local environment configuration files
+.env
+
+# Ignore Git-related files and configurations
+.git/
+.gitignore
+
+# Ignore documentation and example query files
+*.md
+queries.txt
+
+# Ignore deprecated or superseded front-end files
+superseded_ui/
+
+# Ignore specific app files not required for Docker
+streamlit_app.py
+flask_app.py
+
+# Ignore other unused folders
+images/
+demo_polished/

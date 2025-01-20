@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-app
+  template:
+    metadata:
+      labels:
+        app: fastapi-app
+    spec:
+      containers:
+      - name: fastapi-container
+        image: multimodalrag.azurecr.io/fastapi-app:v1
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - secretRef:
+            name: env-secrets  # Pulls all environment variables from the Kubernetes Secret
+      imagePullSecrets:
+      - name: acr-secret  # Used to authenticate to Azure Container Registry
