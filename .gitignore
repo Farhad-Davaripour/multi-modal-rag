@@ -1,0 +1,25 @@
+# Environment and Configuration  
+.env  
+.venv  
+
+# Data and Assets  
+/data/  
+/images/  
+/cached/  
+
+# Python Files  
+*.pyc  
+__pycache__/  
+
+# Jupyter Notebook Files  
+.ipynb_checkpoints/  
+demo_polished.ipynb  
+
+# Node.js Files  
+/node_modules/  
+
+# Deprecated or Unused Files  
+superseded_ui/  
+tls/  
+miscellaneous/  
+*.tmp  

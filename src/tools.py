@@ -50,7 +50,7 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 from dotenv import load_dotenv
 load_dotenv(override=True)
