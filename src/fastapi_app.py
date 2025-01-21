@@ -149,8 +149,8 @@ def verify_jwt(creds: HTTPAuthorizationCredentials = Security(bearer_scheme)):
 app = FastAPI()
 
 origins = [
-    "https://multi-modal-rag-ui.azurewebsites.net",  # your front-end domain
-    # Possibly "http://localhost:3000" for local dev
+    "https://multi-modal-rag-ui.azurewebsites.net",  # the front-end domain
+    "http://localhost:3000", # "http://localhost:3000" for local dev
 ]
 
 app.add_middleware(

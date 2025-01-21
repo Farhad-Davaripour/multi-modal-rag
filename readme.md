@@ -97,6 +97,11 @@ python .\flask_app.py
    docker push multimodalrag.azurecr.io/fastapi-app:v1
    ```
 
+6.1 **Optionally remove old versions using** 
+
+   ```powershell
+   az acr repository delete --name multimodalrag --image fastapi-app:<tag> --yes
+   ```
 ---
 
 ### 3.2 Set up Azure Kubernetes Service (AKS)
@@ -208,12 +213,15 @@ az webapp create `
    ```
 2. Set container configuration:
    ```powershell
+   $ACRPassword = (az acr credential show --name multimodalrag --query "passwords[0].value" -o tsv)
+   $ACRUsername = (az acr credential show --name multimodalrag --query "username" -o tsv)
+
    az webapp config container set `
      --name multi-modal-rag `
      --resource-group rg-genAI-sandbox `
      --docker-registry-server-url "https://multimodalrag.azurecr.io" `
-     --docker-registry-server-user <ACR_USERNAME> `
-     --docker-registry-server-password <ACR_PASSWORD> `
+     --docker-registry-server-user $ACRUsername `
+     --docker-registry-server-password $ACRPassword `
      --docker-custom-image-name "multimodalrag.azurecr.io/fastapi-app:v1"
    ```
 
@@ -263,6 +271,11 @@ az webapp config container set `
   --name multi-modal-rag `
   --resource-group rg-genAI-sandbox `
   --docker-custom-image-name "multimodalrag.azurecr.io/fastapi-app:v2"
+```
+
+```powershell
+# Example: Retreive the log from the app service
+az webapp log tail -n multi-modal-rag -g rg-genAI-sandbox
 ```
 
 ---
